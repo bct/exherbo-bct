@@ -13,7 +13,7 @@ DOWNLOADS="http://code.suckless.org/dl/tools/${PNV}.tar.gz"
 LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
-MYOPTIONS="xinerama"
+MYOPTIONS="xinerama vertical [[ description = [ 3rd party vertical patch ] ]]"
 
 DEPENDENCIES="
     build:
@@ -40,6 +40,6 @@ src_prepare () {
             || die "Sed for to make xinerama optional failed (FLAGS)"
     fi
 
-    expatch "${FILES}/${PNV}-vertical_meillo.diff"
+    option vertical && expatch "${FILES}/${PNV}-vertical_meillo.diff"
 }
 
