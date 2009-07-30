@@ -1,0 +1,26 @@
+# Copyright 2009 Brendan Taylor <whateley@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A general purpose messaging and notification program"
+DESCRIPTION="
+Dzen is a general purpose messaging, notification and menuing program for X11. It was designed to be scriptable in any language and integrate well with window managers like dwm, wmii and xmonad though it will work with any windowmanger.
+"
+
+HOMEPAGE="http://gotmor.googlepages.com/dzen"
+DOWNLOADS="http://gotmor.googlepages.com/${PNV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/libX11
+"
+
+src_prepare () {
+    # Fix prefix
+    sed -e "/^PREFIX/s:/usr/local:/usr:" \
+        -i config.mk \
+        || die "Sed for PREFIX failed"
+}
