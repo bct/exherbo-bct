@@ -1,0 +1,45 @@
+# Copyright 2008 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A generic menu for X"
+DESCRIPTION="
+Dynamic menu is a generic menu for X, originally designed for dwm.
+It manages huge amounts (up to 10.000 and more) of user defined menu items efficiently.
+"
+
+HOMEPAGE="http://suckless.org/programs/dmenu.html"
+DOWNLOADS="http://code.suckless.org/dl/tools/${PNV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="xinerama"
+
+DEPENDENCIES="
+    build:
+        x11-proto/xproto
+        xinerama? ( x11-proto/xineramaproto )
+    build+run:
+        x11-libs/libX11
+        xinerama? ( x11-libs/libXinerama )
+"
+
+src_prepare () {
+    # Fix prefix
+    sed -e "/^PREFIX/s:/usr/local:/usr:" \
+        -i config.mk \
+        || die "Sed for PREFIX failed"
+
+    # Make xinerama optional
+    if optionq !xinerama; then
+        sed -e "s/^XINERAMALIBS/# &/" \
+            -i config.mk \
+            || die "Sed for to make xinerama optional failed (LIBS)"
+        sed -e "s/^XINERAMAFLAGS/# &/" \
+            -i config.mk \
+            || die "Sed for to make xinerama optional failed (FLAGS)"
+    fi
+
+    expatch "${FILES}/${PNV}-vertical_meillo.diff"
+}
+
