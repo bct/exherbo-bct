@@ -1,0 +1,18 @@
+# Copyright 2010 Brendan Taylor <whateley@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="grep, applied to the network layer"
+HOMEPAGE="http://ngrep.sourceforge.net/"
+DOWNLOADS="http://prdownloads.sourceforge.net/${PN}/${PNV}.tar.bz2"
+
+PLATFORMS="~amd64"
+MYOPTIONS=""
+LICENCES="ngrep"
+SLOT="0"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/libpcap
+"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-pcap-includes=/usr/include/pcap )
