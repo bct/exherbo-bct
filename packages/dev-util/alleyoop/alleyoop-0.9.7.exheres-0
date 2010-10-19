@@ -1,0 +1,20 @@
+# Copyright 2010 Brendan Taylor <whateley@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A Valgrind front-end for GNOME"
+HOMEPAGE="http://alleyoop.sourceforge.net/"
+DOWNLOADS="http://prdownloads.sourceforge.net/${PN}/${PNV}.tar.gz"
+
+PLATFORMS="~amd64"
+MYOPTIONS=""
+LICENCES="GPL-2"
+SLOT="0"
+
+DEPENDENCIES="
+    build+run:
+        dev-util/valgrind[>=3.3.0]
+        x11-libs/gtk+[>=2.2.0]
+        gnome-platform/GConf[>=2.2.0]
+        gnome-platform/libgnome[>=2.2.0]
+        gnome-platform/libgnomeui[>=2.2.0]
+"
