@@ -1,0 +1,16 @@
+# Copyright 2009 Brendan Taylor <whateley@gmail.com>
+# Distributed under the terms of the GNU General Purpose License v2
+
+SUMMARY="Command-line interface to libgphoto2"
+HOMEPAGE="http://gphoto.sourceforge.net/"
+
+DOWNLOADS="mirror://sourceforge/gphoto/${PNV}.tar.bz2"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+    build+run:
+      media-libs/libgphoto2
+"
