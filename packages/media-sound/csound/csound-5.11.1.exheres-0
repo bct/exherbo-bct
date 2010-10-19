@@ -1,0 +1,23 @@
+# Copyright 2010 Brendan Taylor <whateley@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require scons
+
+MY_PNV=Csound${PV}
+WORK=${WORKBASE}/${MY_PNV}
+
+SUMMARY="A sound design, music synthesis, and signal processing system"
+HOMEPAGE="http://www.csounds.com/"
+DOWNLOADS="mirror://sourceforge/${PN}/${MY_PNV}.tar.gz"
+
+PLATFORMS="~amd64"
+MYOPTIONS=""
+LICENCES="LGPL-2"
+SLOT="0"
+
+DEPENDENCIES="
+    build+run:
+        media-libs/libsndfile[>=1.0.13]
+"
+
+SCONS_SRC_INSTALL_PARAMS=( instdir="${IMAGE}" prefix="/usr" install=1 )
